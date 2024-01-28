@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "merkle-tree"
+version = "0.1.0"
+description = "A simple Merkle Tree Application"
+authors = ["Arnaud Sene <arnaud.sene@pm.me>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "merkle_tree"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^7.4.4"
+coverage = "^7.4.0"
+pycryptodome = "^3.20.0"
+flake8 = "^7.0.0"
+pydocstyle = "^6.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
