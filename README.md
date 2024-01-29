@@ -3,7 +3,10 @@
 This code aims to build a Merkle tree from a list of values.
 All data are hashed using the cryptographic hash algorithm SHA-3 (Secure Hash Algorithm 3).
 
-![workflow](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/01-test.yml/badge.svg)
+[![workflow](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/01-test.yml/badge.svg)](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/)
+
+![coverage](https://img.shields.io/endpoint?url=https://gist.github.com/ArnaudSene/feb2ecb29f338262686c01a37361988a/raw/covbadge.json)
+
 
 ---
 
