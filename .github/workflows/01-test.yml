@@ -73,7 +73,7 @@ jobs:
       - name: "Upload coverage data"
         uses: actions/upload-artifact@v4
         with:
-          name: covdata
+          name: covdata-${{ matrix.python-version }}
           path: .coverage*
 
   coverage:
@@ -100,7 +100,7 @@ jobs:
       - name: Download coverage data
         uses: actions/download-artifact@v4
         with:
-          name: covdata
+          name: covdata-${{ matrix.python-version }}
 
       - name: Combine
         run: |
