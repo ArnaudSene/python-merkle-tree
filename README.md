@@ -3,6 +3,11 @@
 This code aims to build a Merkle tree from a list of values.
 All data are hashed using the cryptographic hash algorithm SHA-3 (Secure Hash Algorithm 3).
 
+![workflow](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/01-test.yml/badge.svg)
+
+---
+
+
 > It is recommended to hash the values provided to the MerkleTree class.
 
 ## Features

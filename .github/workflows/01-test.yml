@@ -16,6 +16,12 @@ jobs:
               with:
                 python-version: ${{ matrix.python-version }}
 
+            #----------------------------------------------
+            #  -----  install pip tox   -----
+            #----------------------------------------------
+            - name: Install dependencies
+              run: |
+                python -m pip install tox tox-gh-actions
 
             #----------------------------------------------
             #  -----  install & configure poetry  -----
@@ -36,22 +42,84 @@ jobs:
               with:
                 path: .venv
                 key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
-            #----------------------------------------------
-            # install dependencies if cache does not exist
-            #----------------------------------------------
-            - name: Install dependencies
-              if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-              run: poetry install --no-interaction --no-root
-            #----------------------------------------------
-            # install your root project, if required
-            #----------------------------------------------
-            - name: Install project
-              run: poetry install --no-interaction --no-root
-            #----------------------------------------------
-            #              run test suite
-            #----------------------------------------------
-            - name: Run tests
+            
+            
+            # #----------------------------------------------
+            # # install dependencies if cache does not exist
+            # #----------------------------------------------
+            # - name: Install dependencies
+            #   if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+            #   run: poetry install --no-interaction --no-root
+            # #----------------------------------------------
+            # # install your root project, if required
+            # #----------------------------------------------
+            # - name: Install project
+            #   run: poetry install --no-interaction --no-root
+            # #----------------------------------------------
+            # # run test suite
+            # #----------------------------------------------
+            # - name: Run tests
+            #   run: |
+            #       source .venv/bin/activate
+            #       coverage run -m pytest -v -s tests/unit/apps/test_merkle.py
+            #       coverage report -m
+            #       coverage xml coverage.xml
+    
+            - name: "Run tox for ${{ matrix.python-version }}"
               run: |
-                  source .venv/bin/activate
-                  coverage run -m pytest -v -s tests/unit/apps/test_merkle.py
-                  coverage report -m
+                python -m tox
+            #----------------------------------------------
+            # Coverage
+            #----------------------------------------------
+            - name: "Upload coverage data"
+              uses: actions/upload-artifact@v4
+              with:
+                name: covdata
+                path: .coverage.*
+
+
+    coverage:
+      name: Coverage
+      needs: build
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          python-version: ["3.11", "3.12"]
+
+      steps:
+        - name: Check out the repo
+          uses: actions/checkout@v4
+
+        - name: Set up Python ${{ matrix.python-version }}
+          uses: actions/setup-python@v5
+          with:
+            python-version: ${{ matrix.python-version }}
+  
+        - name: Install dependencies
+          run: |
+            python -m pip install tox tox-gh-actions
+  
+        - name: Download coverage data
+          uses: actions/download-artifact@v4
+          with:
+            name: covdata
+  
+        - name: Combine
+          run: |
+            python -m tox -e coverage
+            export TOTAL=$(python -c "import json;print(json.load(open('coverage.json'))['totals']['percent_covered_display'])")
+            echo "total=$TOTAL" >> $GITHUB_ENV
+            echo "### Total coverage: ${TOTAL}%" >> $GITHUB_STEP_SUMMARY
+  
+        - name: Make badge
+          uses: schneegans/dynamic-badges-action@v1.7.0
+          with:
+            # GIST_TOKEN is a GitHub personal access token with scope "gist".
+            auth: ${{ secrets.GIST_TOKEN }}
+            gistID: feb2ecb29f338262686c01a37361988a
+            filename: covbadge.json
+            label: Coverage
+            message: ${{ env.total }}%
+            minColorRange: 50
+            maxColorRange: 90
+            valColorRange: ${{ env.total }}                
