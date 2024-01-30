@@ -1,11 +1,10 @@
 # Merke Tree in python
 
-[![workflow](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/01-test.yml/badge.svg)](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/01-test.yml) [![coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/ArnaudSene/feb2ecb29f338262686c01a37361988a/raw/4c8ef7edb32d9eb132cee83e5d987ad4411fa00a/covbadge.json)](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/01-test.yml) [![Static Badge](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/downloads/release/python-3110/) [![Static Badge](https://img.shields.io/badge/python-3.12-blue)](https://www.python.org/downloads/release/python-3120/)
+[![GitHub Tag](https://img.shields.io/github/v/tag/ArnaudSene/python-merkle-tree)](https://github.com/ArnaudSene/python-merkle-tree/releases/tag/v0.1.0) [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/ArnaudSene/python-merkle-tree/01-test.yml?logo=githubactions&logoColor=white&label=%7C%20build)](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/01-test.yml) [![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgist.githubusercontent.com%2FArnaudSene%2Ffeb2ecb29f338262686c01a37361988a%2Fraw%2F4c8ef7edb32d9eb132cee83e5d987ad4411fa00a%2Fcovbadge.json&query=message&logo=pytest&logoColor=white&label=%7C%20Coverage&color=lemon)](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/01-test.yml) [![Static Badge](https://img.shields.io/badge/3.11-blue?logo=python&logoColor=white&label=%7C%20Python)](https://www.python.org/downloads/release/python-3110/) [![Static Badge](https://img.shields.io/badge/3.12-blue?logo=python&logoColor=white&label=%7C%20Python)](https://www.python.org/downloads/release/python-3120/)
 
 ---
 This code aims to build a Merkle tree from a list of values.
 All data are hashed using the cryptographic hash algorithm SHA-3 (Secure Hash Algorithm 3).
-
 
 > It is recommended to hash the values provided to the MerkleTree class.
 
