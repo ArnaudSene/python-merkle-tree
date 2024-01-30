@@ -30,16 +30,28 @@ cd python-merkle-tree
 This code use `poetry` to manage dependencies
 
 ```shell
-pipx install poetry==1.4.0
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-poetry install
+pip install poetry==1.4.0
+poetry install 
 ```
 
 ## How to use it?
 
+Start a Python interactive shell or session
+```bash
+$ python
+```
+
+```python
+Python 3.11.2 (v3.11.2:878ead1ac1, Feb  7 2023, 10:02:41) [Clang 13.0.0 (clang-1300.0.29.30)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+
 ### Create a Merkle tree
+
 ```python
 data = [
     '43a26051362b8040b289abe93334a5e3662751aa691185ae9e9a2e1e0c169350',  
@@ -49,13 +61,14 @@ data = [
     '1938b5f01496fa8768bc8d5a808d6cd1a3005742a9c7c12e4a17cf9f070ee2d8'
 ]
 
+from src.apps.merkle import MerkleTree
 mt = MerkleTree()
 mt.build_merkle_tree(data)
 ```
 
 ###  Get the merkle tree root
 ```python
-mt.mt.get_root_tree()
+mt.get_root_tree()
 
 'd84f7a7126b5b0ec9872893bb4c92741ee70c44d29043f2b0ff830116b9ee731'
 ```
@@ -77,9 +90,9 @@ mt.get_merkle_tree()
 ]
 ```
 
-### Get a merkle proof by providing a value (leaf)
+### Get a merkle proof by providing a value (a leaf)
 ```python
-self.mt.get_merkle_proof('43a26051362b8040b289abe93334a5e3662751aa691185ae9e9a2e1e0c169350')
+mt.get_merkle_proof('43a26051362b8040b289abe93334a5e3662751aa691185ae9e9a2e1e0c169350')
 
 [
     'f2ff61e5ca30a7708bfa760e5749e10dc81452d9006f8fb35db69d8f490ed637', 
