@@ -1,26 +1,22 @@
 # Merke Tree in python
 
-This code aims to build a Merkle tree from a list of values.
-All data are hashed using the cryptographic hash algorithm SHA-3 (Secure Hash Algorithm 3).
-
-[![workflow](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/01-test.yml/badge.svg)](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/)
-
-![coverage](https://img.shields.io/endpoint?url=https://gist.github.com/ArnaudSene/feb2ecb29f338262686c01a37361988a/raw/covbadge.json)
-
+[![workflow](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/01-test.yml/badge.svg)](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/01-test.yml) [![coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/ArnaudSene/feb2ecb29f338262686c01a37361988a/raw/4c8ef7edb32d9eb132cee83e5d987ad4411fa00a/covbadge.json)](https://github.com/ArnaudSene/python-merkle-tree/actions/workflows/01-test.yml) [![Static Badge](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/downloads/release/python-3110/) [![Static Badge](https://img.shields.io/badge/python-3.12-blue)](https://www.python.org/downloads/release/python-3120/)
 
 ---
+This code aims to build a Merkle tree from a list of values.
+All data are hashed using the cryptographic hash algorithm SHA-3 (Secure Hash Algorithm 3).
 
 
 > It is recommended to hash the values provided to the MerkleTree class.
 
 ## Features
-- build a merkle tree
-- create a merkle proof
-- verify a value with a merkle proof
-- get the merkle tree root
-- get the merkle tree `size`
-- get the merkle tree `depth`
-- get/count the `leaves`
+- Create a merkle tree
+- Create a merkle proof
+- Verify a value with a merkle proof
+- Get the merkle tree root
+- Get the merkle tree `size`
+- Get the merkle tree `depth`
+- Get/count the `leaves`
 
 ## Installation
 
